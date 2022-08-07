@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#define INIT_CHAR 96
+#define INIT_CHAR 96  // ' char code
 
 using namespace std;
 
