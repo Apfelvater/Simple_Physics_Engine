@@ -1,10 +1,7 @@
 #include <iostream>
+#include "Point.h"
 
-class Point {
+Point::Point(int intVal) : intValue(intVal) {}
 
-    private:
-    
-
-    public:
-
-}
+void Point::setIntValue(int val) { intValue = val; }
+int Point::getIntValue() { return intValue; }

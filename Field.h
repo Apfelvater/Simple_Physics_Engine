@@ -2,7 +2,7 @@
 #define FIELD_H
 
 #include <vector>
-#inlcude "Point.h"
+#include "Point.h"
 
 class Field {
 
@@ -18,6 +18,6 @@ class Field {
     ~Field();
 
     void draw_field();
-}
+};
 
 #endif
