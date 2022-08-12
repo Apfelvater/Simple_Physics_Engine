@@ -1,5 +1,5 @@
 #include "Field.h"
-#include "Atom.h"
+#include "Point.h"
 #include <iostream>
 #include <vector>
 
@@ -7,11 +7,12 @@
 
 using namespace std;
 
+// --------------- Con/Destructors ---------------
 Field::Field(int x, int y) {
     cout << "Constructing...\n";
     max_x = x;
     max_y = y;
-    field_vector = new  vector<vector<Atom>>(y, vector<Atom>(x, Atom()));
+    field_vector = new  vector<vector<Point>>(y, vector<Point>(x, Point()));
     cout << "...constructed.\n";
 }
 Field::Field(int size) : Field((int) size * resolution_factor, size) {}
@@ -19,6 +20,12 @@ Field::~Field() {
     cout << "Destructing...\n";
     delete field_vector;
     cout << "...destructed.\n";
+}
+
+
+// --------------- methods ---------------
+void Field::update_spot(int x, int y, Point value) {
+    (*field_vector)[x][y] = Point(value);
 }
 
 void Field::draw_field() {
@@ -31,9 +38,11 @@ void Field::draw_field() {
     }
     cout << cout_string;
     free(cout_string);
+    updated = false;
 }
+
 void Field::draw_updates() {
-    
+    if (updated) draw_field();
 }
 
 

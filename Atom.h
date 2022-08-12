@@ -39,8 +39,8 @@ class Atom {
     Position getPos();
     std::vector<float> getVelocity();
     std::vector<float> getForce();
-    char toChar();
     string toString();
+    char toChar();
 
     // Energy Application:
     void move(float dx, float dy);

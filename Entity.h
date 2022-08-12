@@ -11,7 +11,8 @@ class Entity: public Atom {
     int size_y;
 
     public:
-    
+    Entity();
+    Entity(int x, int y);
     
 };
 

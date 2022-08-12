@@ -9,6 +9,7 @@ class Point {
 
 
     public:
+    Point();
     Point(int intVal); 
     int getIntValue();
     void setIntValue(int val);

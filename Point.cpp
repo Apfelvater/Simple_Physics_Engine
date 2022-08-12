@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Point.h"
 
+Point::Point() : intValue(-1) {}
 Point::Point(int intVal) : intValue(intVal) {}
 
 void Point::setIntValue(int val) { intValue = val; }
