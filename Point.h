@@ -12,6 +12,7 @@ class Point {
     Point(int intVal); 
     int getIntValue();
     void setIntValue(int val);
+    char toChar();
 
 };
 #endif

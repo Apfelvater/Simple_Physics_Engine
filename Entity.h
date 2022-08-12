@@ -12,8 +12,7 @@ class Entity: public Atom {
 
     public:
     
-
-
+    
 };
 
 #endif

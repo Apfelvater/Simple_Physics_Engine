@@ -2,10 +2,18 @@
 #define ATOM_H
 
 #include <vector>
+#include <sstream>
+#include <string>
 
 struct Position {
     float x;
     float y;
+
+    string toString() {
+        std::stringstream ss;
+        ss << "x=" << x << ", y=" << y;
+        return ss.str();
+    }
 };
 
 class Atom {
@@ -20,6 +28,7 @@ class Atom {
 
     public:
 
+    Atom();
     Atom(Position p);
     Atom(int x, int y);
     Atom(int x, int y, float w);
@@ -30,6 +39,8 @@ class Atom {
     Position getPos();
     std::vector<float> getVelocity();
     std::vector<float> getForce();
+    char toChar();
+    string toString();
 
     // Energy Application:
     void move(float dx, float dy);

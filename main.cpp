@@ -24,6 +24,6 @@ int main() {
 
 void field_builder(Field field) {
     while(true) {
-        
+        field.draw_updates();
     }
 }
