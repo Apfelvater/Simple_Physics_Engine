@@ -20,10 +20,20 @@ void field_builder(Field field) {
 
 int main() {
 
+    // System Test Start <>
     vector<Entity> movables; // Use this for multiple movables
     Entity MyMovable((int) TEST_FIELD_SIZE/2, (int) TEST_FIELD_SIZE/2);
     Entity M2(1, 2);
+    movables.push_back(MyMovable);
+    movables.push_back(M2);
+
+    for (Entity e : movables) {
+        // Draw each
+    }
+
     return 0;
+    // System Test End </>
+
 
     // Initialisation
     Field field(TEST_FIELD_SIZE);

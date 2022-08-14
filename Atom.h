@@ -9,7 +9,7 @@ struct Position {
     float x;
     float y;
 
-    string toString() {
+    std::string toString() {
         std::stringstream ss;
         ss << "x=" << x << ", y=" << y;
         return ss.str();
@@ -39,7 +39,7 @@ class Atom {
     Position getPos();
     std::vector<float> getVelocity();
     std::vector<float> getForce();
-    string toString();
+    std::string toString();
     char toChar();
 
     // Energy Application:

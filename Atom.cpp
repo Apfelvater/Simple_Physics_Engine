@@ -54,7 +54,7 @@ void Atom::setWeight(float w) {
     weight = w;
 }
 
-char toChar() {
+char Atom::toChar() {
     return 'F';
 }
 

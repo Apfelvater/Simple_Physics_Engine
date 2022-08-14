@@ -44,12 +44,3 @@ void Field::draw_field() {
 void Field::draw_updates() {
     if (updated) draw_field();
 }
-
-
-int main() {
-    int size;
-    cin>>size;
-    Field f(size);
-    f.draw_field();
-    return 0;
-}

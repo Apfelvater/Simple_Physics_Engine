@@ -6,3 +6,4 @@ Point::Point(int intVal) : intValue(intVal) {}
 
 void Point::setIntValue(int val) { intValue = val; }
 int Point::getIntValue() { return intValue; }
+char Point::toChar() { return (char) intValue; }
