@@ -24,8 +24,8 @@ Field::~Field() {
 
 
 // --------------- methods ---------------
-void Field::update_spot(int x, int y, Point value) {
-    (*field_vector)[x][y] = Point(value);
+void Field::update_spot(int x, int y, Atom value) {
+    (*field_vector)[x][y] = Atom(value);
 }
 
 void Field::draw_field() {

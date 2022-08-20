@@ -11,7 +11,7 @@ class Field {
     float resolution_factor = 4/3;
     int max_y;
     int max_x;
-    vector<vector<Point>>* field_vector;
+    vector<vector<Atom>>* field_vector;
 
     public:
     Field(int x, int y);
@@ -20,7 +20,7 @@ class Field {
 
     void draw_field();
     void draw_updates();
-    void update_spot(int x, int y, Point value);
+    void update_spot(int x, int y, Atom value);
 };
 
 #endif
