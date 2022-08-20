@@ -36,6 +36,7 @@ Field::~Field() {
 void Field::update_value(int x, int y, Entity* value) {
     (*field_vector)[x][y] = value;
     buf_cout[y * (max_x + 1) + x] = value->toChar();
+    buf_updated = true;
 }
 
 void Field::init_buf() {

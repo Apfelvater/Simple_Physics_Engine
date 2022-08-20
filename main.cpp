@@ -15,10 +15,12 @@ using namespace std;
 void field_builder(Field field) {
     while(true) {
         field.draw_updates();
+        usleep(50);
     }
 }
 
 int main() {
+//TODO: System Test mit Field!
 /**
     // System Test Start <>
     vector<Entity> movables; // Use this for multiple movables

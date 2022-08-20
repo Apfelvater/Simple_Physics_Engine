@@ -1,3 +1,20 @@
+/**
+ * @file Field.h
+ * @author Apfelvater
+ * @brief 
+ * @version 0.1
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ * USAGE:
+ * -init_buf() #initiates cout buffer
+ * -draw_field() #to draw empty field
+ * -update_value(x, y, entity) #to add a value to the field
+ * -draw_updates() #to draw if field has changed
+ * 
+ */
+
 #ifndef FIELD_H
 #define FIELD_H
 
@@ -25,7 +42,6 @@ class Field {
     void draw_updates();
     void init_buf();
     void update_value(int x, int y, Entity* value);
-    void update_buf();
 };
 
 #endif
