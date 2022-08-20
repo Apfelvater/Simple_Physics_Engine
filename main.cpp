@@ -8,7 +8,7 @@
 #include "Entity.h"
 
 
-#define TEST_FIELD_SIZE 24
+#define TEST_FIELD_SIZE 5
 
 using namespace std;
 
@@ -19,7 +19,7 @@ void field_builder(Field field) {
 }
 
 int main() {
-
+/**
     // System Test Start <>
     vector<Entity> movables; // Use this for multiple movables
     Entity MyMovable((int) TEST_FIELD_SIZE/2, (int) TEST_FIELD_SIZE/2);
@@ -33,11 +33,12 @@ int main() {
 
     return 0;
     // System Test End </>
-
+**/
 
     // Initialisation
     Field field(TEST_FIELD_SIZE);
     field.draw_field();
+    return 0;
 
     thread builder_thread(field_builder, field);
     //start all the other threads
