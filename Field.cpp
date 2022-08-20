@@ -7,42 +7,57 @@
 using namespace std;
 
 // --------------- Con/Destructors ---------------
-Field::Field(int x, int y) {
-    cout << "Constructing Field with max_x = " << x << " and max_y = " << y << "...\n";
+void Field::init(int x, int y) {
+    cout << "Field with max_x = " << x << " and max_y = " << y << "\nResolution_Factor is " << resolution_factor << "\nConstructing...\n";
     max_x = x;
     max_y = y;
+    buf_cout = (char*) malloc(y * (x + 1)); // #max_x characters + "\n" TODO: Windows "\n\r" ?
     field_vector = new  vector<vector<Entity *>>(y, vector<Entity *>(x, NULL));
     cout << "...constructed.\n";
 }
-Field::Field(int size) : Field((int) (size * resolution_factor), size) {}
+
+Field::Field(int x, int y) {
+    this->init(x, y);
+}
+
+Field::Field(int size) {
+    this->init(size * resolution_factor, size);
+}
+
 Field::~Field() {
     cout << "Destructing...\n";
+    free(buf_cout);
     delete field_vector;
     cout << "...destructed.\n";
 }
 
 
 // --------------- methods ---------------
-void Field::update_spot(int x, int y, Entity* value) {
+void Field::update_value(int x, int y, Entity* value) {
     (*field_vector)[x][y] = value;
+    buf_cout[y * (max_x + 1) + x] = value->toChar();
+}
+
+void Field::init_buf() {
+    cout << "max_y:" << max_y << '\n';
+    for(int i = 0; i < max_y; i++) {
+        cout << "i:" << i << ":";
+        for(int j = 0; j < max_x; j++) {
+            cout << "j:" << j;
+            if (field_vector->at(i).at(j) != NULL)
+                buf_cout[i * (max_x+1) + j] = field_vector->at(i).at(j)->toChar();
+            else 
+                buf_cout[i * (max_x+1) + j] = '0';
+        }
+        buf_cout[i * (max_x+1) + max_x] = '\n';
+    }
 }
 
 void Field::draw_field() {
-    char* cout_string = (char*) malloc(max_y * (max_x + 1)); // #max_size characters + "\n" TODO: Windows "\n\r" ?
-    for(int i = 0; i < max_y; i++) {
-        for(int j = 0; j < max_x; j++) {
-            if (field_vector->at(i).at(j) != NULL)
-                cout_string[i * (max_x+1) + j] = field_vector->at(i).at(j)->toChar();
-            else 
-                cout_string[i * (max_x+1) + j] = '0';
-        }
-        cout_string[i * (max_x+1) + max_x] = '\n';
-    }
-    cout << cout_string;
-    free(cout_string);
-    updated = false;
+    cout << buf_cout;
+    buf_updated = false;
 }
 
 void Field::draw_updates() {
-    if (updated) draw_field();
+    if (buf_updated) draw_field();
 }

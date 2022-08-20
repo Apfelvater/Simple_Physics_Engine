@@ -7,11 +7,14 @@
 class Field {
 
     private:
-    bool updated = false; // To determine wether the matrix was updated since the last drawing of the field
-    float resolution_factor = 4/3;
+    char * buf_cout;
+    bool buf_updated = false; // To determine wether the field-print-buffer was updated since the last drawing of the field
+    const float resolution_factor = 1.34;
     int max_y;
     int max_x;
     vector<vector<Entity*>>* field_vector;
+
+    void init(int x, int y);
 
     public:
     Field(int x, int y);
@@ -20,7 +23,9 @@ class Field {
 
     void draw_field();
     void draw_updates();
-    void update_spot(int x, int y, Entity* value);
+    void init_buf();
+    void update_value(int x, int y, Entity* value);
+    void update_buf();
 };
 
 #endif

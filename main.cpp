@@ -8,7 +8,7 @@
 #include "Entity.h"
 
 
-#define TEST_FIELD_SIZE 5
+#define TEST_FIELD_SIZE 6
 
 using namespace std;
 
@@ -37,6 +37,7 @@ int main() {
 
     // Initialisation
     Field field(TEST_FIELD_SIZE);
+    field.init_buf();
     field.draw_field();
     return 0;
 
