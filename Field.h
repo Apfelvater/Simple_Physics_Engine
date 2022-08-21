@@ -38,10 +38,17 @@ class Field {
     Field(int size);
     ~Field();
 
+    Entity* get_entity_at(Position pos);
+    Entity* get_entity_at(float x, float y);
+    Entity* get_entity_at(int x, int y);
     void draw_field();
     void draw_updates();
     void init_buf();
     void update_value(Entity* value);
+    void update_value_at(int x, int y, Entity* value);
+    void update_value_at(Position pos, Entity* value);
+    int move_from_to(Position from, Position to);
+    void swap_entities(Position p1, Position p2);
 };
 
 #endif

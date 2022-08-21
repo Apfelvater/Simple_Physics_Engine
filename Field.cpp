@@ -1,10 +1,12 @@
 #include "Field.h"
+#include "Utils.cpp"
 #include <iostream>
 #include <vector>
 
 #define INIT_CHAR 0
 
 using namespace std;
+
 
 // --------------- Con/Destructors ---------------
 void Field::init(int x, int y) {
@@ -33,14 +35,50 @@ Field::~Field() {
 
 
 // --------------- methods ---------------
-void Field::update_value(Entity* value) {
-    if (value == NULL) return;
-    Position pos = value->getPos();
-    int x = (int) (pos.x + 0.5 - (x<0));
-    int y = (int) (pos.y + 0.5 - (y<0));
+Entity* Field::get_entity_at(Position pos) {
+    return this->get_entity_at(pos.x, pos.y);
+}
+
+Entity* Field::get_entity_at(float x, float y) {
+    return this->get_entity_at(Utils::round_floatToInt(x), Utils::round_floatToInt(y));
+}
+
+Entity* Field::get_entity_at(int x, int y) {
+    return (*field_vector)[x][y];
+}
+
+void Field::update_value_at(int x, int y, Entity* value) {
     (*field_vector)[x][y] = value;
     buf_cout[y * (max_x + 1) + x] = value->toChar();
     buf_updated = true;
+}
+
+void Field::update_value_at(Position pos, Entity* value) {
+    int x = Utils::round_floatToInt(pos.x);
+    int y = Utils::round_floatToInt(pos.y);
+    (*field_vector)[x][y] = value;
+    buf_cout[y * (max_x + 1) + x] = value->toChar();
+    buf_updated = true;
+}
+
+void Field::update_value(Entity* value) {
+    if (value == NULL) return;
+    Position pos = value->getPos();
+    int x = Utils::round_floatToInt(pos.x);
+    int y = Utils::round_floatToInt(pos.y);
+    this->update_value_at(x, y, value);
+}
+
+int Field::move_from_to(Position from, Position to) {
+    // Stores Entity found at Position from at Position to and leaves a NULL (or background Entity* (TODO)) at Position from.
+    this->update_value_at(to, this->get_entity_at(from));
+    this->update_value_at(from, NULL);
+}
+
+void Field::swap_entities(Position p1, Position p2) {
+    Entity* tmp = this->get_entity_at(p2);
+    this->update_value_at(p2, this->get_entity_at(p1));
+    this->update_value_at(p1, tmp);
 }
 
 void Field::init_buf() {
