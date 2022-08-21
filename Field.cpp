@@ -71,8 +71,14 @@ void Field::update_value(Entity* value) {
 
 int Field::move_from_to(Position from, Position to) {
     // Stores Entity found at Position from at Position to and leaves a NULL (or background Entity* (TODO)) at Position from.
+    // @return Indicator for what is at Position to: 
+    // 0 - NULL / BackgroundEntity
+    // 1 - Any other Entity
+    int returncode = 0;
+    if (this->get_entity_at(to) != NULL) returncode = 1;
     this->update_value_at(to, this->get_entity_at(from));
     this->update_value_at(from, NULL);
+    return returncode;
 }
 
 void Field::swap_entities(Position p1, Position p2) {
