@@ -7,6 +7,7 @@
 #include <vector>
 #include "Field.h"
 #include "Entity.h"
+#include "MovableEntity.h"
 
 
 #define TEST_FIELD_SIZE 6
@@ -29,9 +30,9 @@ int main() {
 //TODO: System Test mit Field!
 
     // System Test Start <>
-    vector<Entity> movables; // Use this for multiple movables
-    Entity MyMovable((int) TEST_FIELD_SIZE/2, (int) TEST_FIELD_SIZE/2);
-    Entity M2(1, 2);
+    vector<MovableEntity> movables; // Use this for multiple movables
+    MovableEntity MyMovable(TEST_FIELD_SIZE/2, TEST_FIELD_SIZE/2);
+    MovableEntity M2(1.5, 2.7);
     movables.push_back(MyMovable);
     movables.push_back(M2);
 
@@ -44,7 +45,7 @@ int main() {
     field.init_buf();
     field.draw_field();
 
-    for (Entity e : movables) {
+    for (MovableEntity e : movables) {
         usleep(2000000);
         clear();
         field.update_value(&e);

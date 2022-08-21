@@ -8,12 +8,12 @@ Entity::Entity()
     weight = 1;
 }
 
-Entity::Entity(int x, int y) : Entity() {
-    pos = {(float)x, (float)y};
+Entity::Entity(float x, float y) : Entity() {
+    pos = {x, y};
     cout << "Entity created at pos (" << x << ":" << y << ")\n";
 }
 
-Entity::Entity(int x, int y, float w) : Entity(x, y) {
+Entity::Entity(float x, float y, float w) : Entity(x, y) {
     weight = w;
 }
 
