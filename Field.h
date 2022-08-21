@@ -41,7 +41,7 @@ class Field {
     void draw_field();
     void draw_updates();
     void init_buf();
-    void update_value(int x, int y, Entity* value);
+    void update_value(Entity* value);
 };
 
 #endif
