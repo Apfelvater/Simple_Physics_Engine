@@ -21,15 +21,13 @@ struct Position {
 class Entity {
 
     protected:
-
     float weight;
     Position pos{};
 
     public:
-
     Entity();
-    Entity(int x, int y);
-    Entity(int x, int y, float w);
+    Entity(float x, float y);
+    Entity(float x, float y, float w);
     
     float getWeight();
     void setWeight(float w);
