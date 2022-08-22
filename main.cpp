@@ -45,11 +45,16 @@ int main() {
     field.init_buf();
     field.draw_field();
 
-    for (MovableEntity e : movables) {
-        usleep(2000000);
-        clear();
-        field.update_value(&e);
-        field.draw_updates();
+    usleep(1000000);
+
+    for (int isec = 0; isec < 10; isec++) {
+        for (MovableEntity e : movables) {
+            clear();
+            field.update_value(&e);
+            field.draw_updates();
+
+            usleep(1000000);
+        }
     }
 
     return 0;
