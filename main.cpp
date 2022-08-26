@@ -6,7 +6,6 @@
 #include <thread>
 #include <vector>
 #include "Field.h"
-#include "Entity.h"
 #include "MovableEntity.h"
 
 
