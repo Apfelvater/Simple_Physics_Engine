@@ -25,6 +25,19 @@ void clear() {
     cout << "\x1B[2J\x1B[H";
 }
 
+void intro() {
+    clear();
+    string s = "    - Simple Physics Engine -\n";
+    cout << "\n\n" <<s;
+    usleep(3000000);
+    for (int i = 0; i < s.size(); i++) {
+        clear();
+        cout << "\n\n" << s.substr(i);
+        usleep(75000);
+    }
+    clear();
+}
+
 int main() {
 //TODO: System Test mit Field!
 
@@ -35,10 +48,8 @@ int main() {
     movables.push_back(MyMovable);
     movables.push_back(M2);
 
-    clear();
-    cout << "\n\n\t- Simple Physics Engine -\n";
-    usleep(5000000);
-    clear();
+    intro();
+
     // Initialisation
     Field field(TEST_FIELD_SIZE);
     field.init_buf();
@@ -46,12 +57,15 @@ int main() {
 
     usleep(1000000);
 
-    for (int isec = 0; isec < 10; isec++) {
+    for (int isec = 0; isec < 5; isec++) {
         for (MovableEntity e : movables) {
-            clear();
-            field.update_value(&e);
-            field.draw_updates();
+            
+        }
 
+        for (MovableEntity e : movables) {
+            field.update_value(&e);
+            clear();
+            field.draw_updates();
             usleep(1000000);
         }
     }
